@@ -8,6 +8,7 @@
       <p class="mr-3">{{ lang }}</p>
       <!-- <p>{{ contents[lang] }}</p> -->
       <input type="text" v-model="contents[lang]" />
+      <button @click="deleteLanguage(lang)">Remove Language</button>
     </div>
   </div>
 </template>
@@ -25,7 +26,7 @@ export default {
       default: () => {},
     },
   },
-  emits: ["update:modelValue"],
+  emits: ["update:modelValue", "ondelete"],
   setup(props, { emit }) {
     const contents = computed({
       get() {
@@ -35,8 +36,14 @@ export default {
         emit("update:modelValue", val);
       },
     });
+
+    const deleteLanguage = (lang) => {
+      emit("ondelete", lang);
+    };
+
     return {
       contents,
+      deleteLanguage,
     };
   },
 };

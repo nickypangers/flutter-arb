@@ -15,6 +15,7 @@
         v-for="translation in editableContent"
         :title="translation[0]"
         v-model="translation[1]"
+        @ondelete="deleteLanguage"
       />
     </template>
   </div>
@@ -58,6 +59,12 @@ export default {
       return Object.entries(editableObject);
     };
 
+    const deleteLanguage = (lang) => {
+      editableContent.value.forEach((content) => {
+        delete content[1][lang];
+      });
+    };
+
     const addLanguage = () => {
       if (!newLang.value) {
         console.debug("addLanguage", "newLang empty");
@@ -87,6 +94,7 @@ export default {
       isContentLoaded,
       contentKeys,
       addLanguage,
+      deleteLanguage,
       newLang,
     };
   },
