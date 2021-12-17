@@ -11,12 +11,14 @@
           class="bg-blue-200 p-3 rounded-lg my-2"
         />
       </form>
-      <translation-box
-        v-for="translation in editableContent"
-        :title="translation[0]"
-        v-model="translation[1]"
-        @ondelete="deleteLanguage"
-      />
+      <div class="grid grid-cols-2 gap-3">
+        <translation-box
+          v-for="translation in editableContent"
+          v-model:title="translation[0]"
+          v-model:contents="translation[1]"
+          @ondelete="deleteLanguage"
+        />
+      </div>
     </template>
   </div>
 </template>

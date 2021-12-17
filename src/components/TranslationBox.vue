@@ -1,14 +1,29 @@
 <template>
   <div class="border p-4 rounded">
-    <h1>{{ title }}</h1>
-    <div
-      class="border p-4 border-gray-300 flex"
-      v-for="(content, lang, index) in contents"
-    >
-      <p class="mr-3">{{ lang }}</p>
-      <!-- <p>{{ contents[lang] }}</p> -->
-      <input type="text" v-model="contents[lang]" />
-      <button @click="deleteLanguage(lang)">Remove Language</button>
+    <div class="flex items-end">
+      <div class="mr-1">Edit</div>
+      <input
+        type="text"
+        class="text-3xl font-bold"
+        v-model="translationTitle"
+      />
+    </div>
+    <div>
+      <div
+        class="border p-4 border-gray-300 flex items-center"
+        v-for="(content, lang, index) in contents"
+      >
+        <p class="mr-3">{{ lang }}</p>
+        <!-- <p>{{ contents[lang] }}</p> -->
+        <input
+          type="text"
+          class="flex-grow border rounded-lg p-2 mr-3"
+          v-model="contents[lang]"
+        />
+        <button class="rounded-lg bg-red-200 p-1" @click="deleteLanguage(lang)">
+          Remove
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -21,19 +36,28 @@ export default {
       type: String,
       default: "",
     },
-    modelValue: {
+    contents: {
       type: Object,
       default: () => {},
     },
   },
-  emits: ["update:modelValue", "ondelete"],
+  emits: ["update:title", "update:contents", "ondelete"],
   setup(props, { emit }) {
-    const contents = computed({
+    const translationTitle = computed({
       get() {
-        return props.modelValue;
+        return props.title;
       },
       set(val) {
-        emit("update:modelValue", val);
+        emit("update:title", val);
+      },
+    });
+
+    const contents = computed({
+      get() {
+        return props.contents;
+      },
+      set(val) {
+        emit("update:contents", val);
       },
     });
 
@@ -42,6 +66,7 @@ export default {
     };
 
     return {
+      translationTitle,
       contents,
       deleteLanguage,
     };
