@@ -1,5 +1,11 @@
 <template>
-  <div class="border p-4 rounded">
+  <div class="border p-4 rounded relative">
+    <button
+      class="absolute z-10 top-4 right-4 p-1 rounded-lg bg-red-200"
+      @click="deleteTranslation"
+    >
+      Remove
+    </button>
     <div class="flex items-end">
       <div class="mr-1">Edit</div>
       <input
@@ -14,7 +20,6 @@
         v-for="(content, lang, index) in contents"
       >
         <p class="mr-3">{{ lang }}</p>
-        <!-- <p>{{ contents[lang] }}</p> -->
         <input
           type="text"
           class="flex-grow border rounded-lg p-2 mr-3"
@@ -41,7 +46,12 @@ export default {
       default: () => {},
     },
   },
-  emits: ["update:title", "update:contents", "ondelete"],
+  emits: [
+    "update:title",
+    "update:contents",
+    "ondeletelanguage",
+    "ondeletetranslation",
+  ],
   setup(props, { emit }) {
     const translationTitle = computed({
       get() {
@@ -62,13 +72,18 @@ export default {
     });
 
     const deleteLanguage = (lang) => {
-      emit("ondelete", lang);
+      emit("ondeletelanguage", lang);
+    };
+
+    const deleteTranslation = () => {
+      emit("ondeletetranslation");
     };
 
     return {
       translationTitle,
       contents,
       deleteLanguage,
+      deleteTranslation,
     };
   },
 };

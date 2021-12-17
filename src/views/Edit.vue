@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>Edit</p>
+    <p>editableContent</p>
     <p>{{ editableContent }}</p>
     <template v-if="isContentLoaded">
       <form @submit.prevent="addLanguage">
@@ -13,10 +13,11 @@
       </form>
       <div class="grid grid-cols-2 gap-3">
         <translation-box
-          v-for="translation in editableContent"
+          v-for="(translation, index) in editableContent"
           v-model:title="translation[0]"
           v-model:contents="translation[1]"
-          @ondelete="deleteLanguage"
+          @ondeletelanguage="deleteLanguage"
+          @ondeletetranslation="deleteTranslation(index)"
         />
       </div>
     </template>
@@ -61,6 +62,10 @@ export default {
       return Object.entries(editableObject);
     };
 
+    const deleteTranslation = (index) => {
+      editableContent.value.splice(index, 1);
+    };
+
     const deleteLanguage = (lang) => {
       editableContent.value.forEach((content) => {
         delete content[1][lang];
@@ -97,6 +102,7 @@ export default {
       contentKeys,
       addLanguage,
       deleteLanguage,
+      deleteTranslation,
       newLang,
     };
   },
