@@ -4,4 +4,15 @@ import store from "./store";
 import router from "./router";
 import "./index.css";
 
-createApp(App).use(store).use(router).mount("#app");
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faTimes, faFileDownload } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
+library.add(faTimes);
+library.add(faFileDownload);
+
+createApp(App)
+  .use(store)
+  .use(router)
+  .component("font-awesome-icon", FontAwesomeIcon)
+  .mount("#app");

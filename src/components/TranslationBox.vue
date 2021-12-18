@@ -1,32 +1,28 @@
 <template>
-  <div class="border p-4 rounded relative">
-    <button
-      class="absolute z-10 top-4 right-4 p-1 rounded-lg bg-red-200"
-      @click="deleteTranslation"
-    >
-      Remove
-    </button>
-    <div class="flex items-end">
-      <div class="mr-1">Edit</div>
+  <div class="border p-4 rounded-xl">
+    <div class="w-full flex items-center pb-2">
       <input
         type="text"
-        class="text-3xl font-bold"
+        class="text-3xl font-bold flex-grow"
         v-model="translationTitle"
       />
+      <button class="p-1" @click="deleteTranslation">
+        <font-awesome-icon icon="times" />
+      </button>
     </div>
     <div>
       <div
-        class="border p-4 border-gray-300 flex items-center"
+        class="mt-2 flex items-center"
         v-for="(content, lang, index) in contents"
       >
         <p class="mr-3">{{ lang }}</p>
         <input
-          type="text"
-          class="flex-grow border rounded-lg p-2 mr-3"
+          type="textarea"
+          class="flex-grow border rounded-lg p-2 mr-3 text-white"
           v-model="contents[lang]"
         />
-        <button class="rounded-lg bg-red-200 p-1" @click="deleteLanguage(lang)">
-          Remove
+        <button class="p-1" @click="deleteLanguage(lang)">
+          <font-awesome-icon icon="times" />
         </button>
       </div>
     </div>
@@ -88,3 +84,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+input {
+  @apply bg-transparent;
+}
+</style>

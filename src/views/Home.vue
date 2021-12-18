@@ -1,9 +1,13 @@
 <template>
-  <div
-    class="text-3xl font-extrabold flex flex-col justify-center items-center"
-  >
-    <p>Files: {{ files }}</p>
-    <file-drop-area />
+  <div>
+    <div class="py-16">
+      <h1>Flutter ARB Editor</h1>
+    </div>
+    <div
+      class="text-3xl font-extrabold flex flex-col justify-center items-center"
+    >
+      <file-drop-area />
+    </div>
   </div>
 </template>
 <script>

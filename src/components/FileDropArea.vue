@@ -1,5 +1,15 @@
 <template>
-  <div ref="dropArea" class="h-96 w-96 border-2 border-dashed border-black">
+  <div
+    ref="dropArea"
+    class="
+      h-96
+      w-96
+      border-2 border-dashed border-secondary
+      flex
+      items-center
+      justify-center
+    "
+  >
     <span>
       {{ dropText }}
     </span>
