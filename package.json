@@ -12,6 +12,8 @@
     "@fortawesome/vue-fontawesome": "^3.0.0-5",
     "vue": "^3.2.25",
     "vue-router": "4",
+    "vue-toast-notification": "2.0",
+    "vue-toastification": "^2.0.0-rc.5",
     "vuex": "^4.0.2"
   },
   "devDependencies": {

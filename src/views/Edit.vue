@@ -3,7 +3,7 @@
     <div class="flex items-center">
       <button
         class="text-white p-2 border border-white rounded-lg"
-        @click="router.push('/')"
+        @click="editAnotherProject"
       >
         Edit Another Project
       </button>
@@ -22,27 +22,19 @@
           >
         </button>
       </div>
-      <div class="flex justify-between items-center">
-        <form @submit.prevent="addLanguage">
-          <input type="text" v-model="newLang" placeholder="New Language" />
-          <input
-            type="submit"
-            value="Add Language"
-            class="bg-blue-200 p-3 rounded-lg my-2"
-          />
-        </form>
-        <form @submit.prevent="addTranslation">
-          <input
-            type="text"
-            v-model="newTranslationKey"
-            placeholder="New Translation"
-          />
-          <input
-            type="submit"
-            value="Add Translation"
-            class="bg-blue-200 p-3 rounded-lg my-2"
-          />
-        </form>
+      <div class="flex justify-between items-center my-5">
+        <add-input-form-row
+          v-model="newTranslationKey"
+          placeholder="New Translation"
+          button-text="Add Translation"
+          @submit="addTranslation"
+        />
+        <add-input-form-row
+          v-model="newLang"
+          placeholder="New Language"
+          button-text="Add Language"
+          @submit="addLanguage"
+        />
       </div>
       <div class="grid grid-cols-2 gap-3">
         <translation-box
@@ -60,8 +52,10 @@
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import { ref, computed, onMounted } from "vue";
-import TranslationBox from "../components/TranslationBox.vue";
+import { useToast } from "vue-toastification";
 import { exportToFiles } from "../common/export";
+import AddInputFormRow from "../components/AddInputFormRow.vue";
+import TranslationBox from "../components/TranslationBox.vue";
 import {
   getLanguageFromName,
   getContentFromFile,
@@ -70,8 +64,10 @@ import {
 export default {
   components: {
     TranslationBox,
+    AddInputFormRow,
   },
   setup() {
+    const toast = useToast();
     const router = useRouter();
     const store = useStore();
     const files = computed(() => Array.from(store.state.files));
@@ -118,6 +114,7 @@ export default {
 
     const addTranslation = () => {
       if (!newTranslationKey.value) {
+        toast.warning("Please enter a translation key");
         return;
       }
       let content = {};
@@ -130,18 +127,21 @@ export default {
 
     const addLanguage = () => {
       if (!newLang.value) {
-        console.debug("addLanguage", "newLang empty");
+        // console.debug("addLanguage", "newLang empty");
+        toast.warning("Language cannot be empty");
         return;
       }
 
       if (editableContent.value.length === 0) {
-        console.debug("addLanguage", "editableContent empty");
+        // console.debug("addLanguage", "editableContent empty");
+        toast.warning("No translations to add language to");
         return;
       }
 
       editableContent.value.forEach((content) => {
         if (content[1][newLang.value]) {
-          console.debug("addLanguage", "newLang already exists");
+          // console.debug("addLanguage", "newLang already exists");
+          toast.warning("Language already exists");
           return;
         }
         content[1][newLang.value] = "";
@@ -155,9 +155,32 @@ export default {
     };
 
     const exportTranslations = () => {
+      if (languages.value.length === 0) {
+        // console.debug("export", "languages empty");
+        toast.warning("No translations to export");
+        return;
+      }
+
+      if (editableContent.value.length === 0) {
+        // console.debug("export", "editableContent empty");
+        toast.warning("No translations to export");
+        return;
+      }
+
       languages.value.forEach((lang) => {
         exportToFiles(editableContent.value, lang);
       });
+      toast.success("Successfully exported");
+    };
+
+    const editAnotherProject = () => {
+      store.dispatch("clearFiles");
+      if (store.state.files.length !== 0) {
+        // console.debug("editAnotherProject", "files not empty");
+        toast.warning("Something went wrong. Please refresh window");
+        return;
+      }
+      router.push("/");
     };
 
     onMounted(async () => {
@@ -180,6 +203,7 @@ export default {
       newLang,
       newTranslationKey,
       exportTranslations,
+      editAnotherProject,
     };
   },
 };

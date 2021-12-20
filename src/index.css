@@ -19,3 +19,7 @@ html {
 h1 {
   @apply font-extrabold text-3xl;
 }
+
+a {
+  @apply underline text-white;
+}

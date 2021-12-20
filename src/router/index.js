@@ -13,13 +13,13 @@ const routes = [
     name: "Edit",
     path: "/edit",
     component: Edit,
-    beforeEnter: (to, from, next) => {
-      if (store.state.files.length === 0) {
-        next("/");
-        return;
-      }
-      next();
-    },
+    // beforeEnter: (to, from, next) => {
+    //   if (store.state.files.length === 0) {
+    //     next("/");
+    //     return;
+    //   }
+    //   next();
+    // },
   },
 ];
 

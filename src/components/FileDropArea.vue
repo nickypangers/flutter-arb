@@ -38,7 +38,7 @@ export default {
     );
 
     onMounted(() => {
-      console.log(dropArea.value);
+      // console.log(dropArea.value);
     });
 
     const dragLeaveHandler = (e) => {

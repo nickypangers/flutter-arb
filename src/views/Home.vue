@@ -8,12 +8,20 @@
     >
       <file-drop-area />
     </div>
+    <div class="mt-12">
+      <button
+        class="p-3 bg-secondary text-white text-lg rounded-lg"
+        @click="router.push('/edit')"
+      >
+        Start New Project
+      </button>
+    </div>
   </div>
 </template>
 <script>
 import FileDropArea from "../components/FileDropArea.vue";
 import { useStore } from "vuex";
-import { computed, watch } from "vue";
+import { computed, watch, onMounted } from "vue";
 import { useRouter } from "vue-router";
 export default {
   components: {
@@ -23,6 +31,7 @@ export default {
     const store = useStore();
     const router = useRouter();
     const files = computed(() => Array.from(store.state.files));
+
     watch(
       () => store.state.files,
       (newVal) => {
@@ -32,8 +41,12 @@ export default {
         router.push("/edit");
       }
     );
+
+    onMounted(() => {});
+
     return {
       files,
+      router,
     };
   },
 };
