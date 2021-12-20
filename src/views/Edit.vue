@@ -1,9 +1,16 @@
 <template>
   <div>
-    <p>editableContent</p>
-    <p>{{ editableContent }}</p>
-    <p>languages</p>
-    <p>{{ languages }}</p>
+    <div class="flex items-center">
+      <button
+        class="text-white p-2 border border-white rounded-lg"
+        @click="router.push('/')"
+      >
+        Edit Another Project
+      </button>
+    </div>
+    <template v-if="!isContentLoaded">
+      <p>Loading</p>
+    </template>
     <template v-if="isContentLoaded">
       <div>
         <button
@@ -51,6 +58,7 @@
 </template>
 <script>
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 import { ref, computed, onMounted } from "vue";
 import TranslationBox from "../components/TranslationBox.vue";
 import { exportToFiles } from "../common/export";
@@ -64,6 +72,7 @@ export default {
     TranslationBox,
   },
   setup() {
+    const router = useRouter();
     const store = useStore();
     const files = computed(() => Array.from(store.state.files));
     const languages = ref([]);
@@ -157,6 +166,7 @@ export default {
     });
 
     return {
+      router,
       languages,
       getLanguageFromName,
       files,
