@@ -36,6 +36,8 @@
           @submit="addLanguage"
         />
       </div>
+      <!-- <p>{{ editableContent }}</p> -->
+
       <div class="grid grid-cols-2 gap-3">
         <translation-box
           v-for="(translation, index) in editableContent"
@@ -164,6 +166,34 @@ export default {
       if (editableContent.value.length === 0) {
         // console.debug("export", "editableContent empty");
         toast.warning("No translations to export");
+        return;
+      }
+
+      const emptyKeyList = editableContent.value.filter(
+        (translation) => translation[0] === ""
+      );
+
+      console.log(emptyKeyList);
+
+      if (emptyKeyList.length > 0) {
+        // console.debug("export", "empty key list");
+        toast.warning("Translation key cannot be empty");
+        return;
+      }
+
+      let isTranslationValueEmpty = false;
+
+      editableContent.value.forEach((translation) => {
+        languages.value.forEach((lang) => {
+          if (!translation[1][lang]) {
+            isTranslationValueEmpty = true;
+            return;
+          }
+        });
+      });
+
+      if (isTranslationValueEmpty) {
+        toast.warning("Translation cannot be empty");
         return;
       }
 
