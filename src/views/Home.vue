@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="py-16">
+    <div class="py-8">
       <h1>Flutter ARB Editor</h1>
     </div>
     <div
