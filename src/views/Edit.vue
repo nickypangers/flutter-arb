@@ -1,11 +1,19 @@
 <template>
   <div>
-    <div class="flex items-center">
+    <div
+      class="flex flex-col md:flex-row md:justify-between md:items-center mb-4"
+    >
       <button
         class="text-white p-2 border border-white rounded-lg"
         @click="editAnotherProject"
       >
         Edit Another Project
+      </button>
+      <button
+        class="mt-4 md:mt-0 text-white p-2 border border-white rounded-lg"
+        @click="router.push('/guide')"
+      >
+        Guide
       </button>
     </div>
     <template v-if="!isContentLoaded">
@@ -22,23 +30,41 @@
           >
         </button>
       </div>
-      <div class="flex justify-between items-center my-5">
-        <add-input-form-row
-          v-model="newTranslationKey"
-          placeholder="New Translation"
-          button-text="Add Translation"
-          @submit="addTranslation"
-        />
-        <add-input-form-row
-          v-model="newLang"
-          placeholder="New Language"
-          button-text="Add Language"
-          @submit="addLanguage"
-        />
+      <div class="flex justify-between items-start my-5">
+        <div class="flex items-center">
+          <add-input-form-row
+            v-model="newTranslationKey"
+            placeholder="New Translation"
+            button-text="Add Translation"
+            @submit="addTranslation"
+          />
+          <!-- <button>
+            <font-awesome-icon
+              icon="info-circle"
+              size="lg"
+              class="ml-2 text-white"
+            />
+          </button> -->
+        </div>
+        <div class="flex items-center">
+          <add-input-form-row
+            v-model="newLang"
+            placeholder="New Language"
+            button-text="Add Language"
+            @submit="addLanguage"
+          />
+          <button @click="router.push('/guide')">
+            <font-awesome-icon
+              icon="info-circle"
+              size="lg"
+              class="ml-2 text-white"
+            />
+          </button>
+        </div>
       </div>
       <!-- <p>{{ editableContent }}</p> -->
 
-      <div class="grid grid-cols-2 gap-3">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
         <translation-box
           v-for="(translation, index) in editableContent"
           v-model:title="translation[0]"

@@ -1,6 +1,6 @@
 <template>
   <div class="container py-8">
-    <div class="flex justify-end items-center">
+    <div class="flex justify-end items-center mb-6">
       <a href="https://github.com/nickypangers/arb-editor">
         <font-awesome-icon :icon="['fab', 'github']" size="2x" />
       </a>

@@ -15,6 +15,12 @@
       >
         Start New Project
       </button>
+      <button
+        class="ml-3 p-3 bg-secondary text-white text-lg rounded-lg"
+        @click="router.push('/guide')"
+      >
+        Guide
+      </button>
     </div>
   </div>
 </template>

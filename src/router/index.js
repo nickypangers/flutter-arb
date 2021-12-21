@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import Edit from "../views/Edit.vue";
-import store from "../store";
+import Guide from "../views/Guide.vue";
 
 const routes = [
   {
@@ -13,13 +13,11 @@ const routes = [
     name: "Edit",
     path: "/edit",
     component: Edit,
-    // beforeEnter: (to, from, next) => {
-    //   if (store.state.files.length === 0) {
-    //     next("/");
-    //     return;
-    //   }
-    //   next();
-    // },
+  },
+  {
+    name: "Guide",
+    path: "/guide",
+    component: Guide,
   },
 ];
 
