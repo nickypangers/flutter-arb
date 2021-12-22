@@ -1,5 +1,5 @@
 <template>
-  <div
+  <button
     ref="dropArea"
     class="
       h-96
@@ -9,6 +9,7 @@
       items-center
       justify-center
     "
+    @click="openFileInput()"
   >
     <span>
       {{ dropText }}
@@ -19,10 +20,11 @@
       name="files"
       id="files"
       accept=".arb"
+      @change="updateFile"
       multiple
       hidden
     />
-  </div>
+  </button>
 </template>
 <script>
 import { ref, onMounted, computed } from "vue";
@@ -32,9 +34,12 @@ export default {
   setup() {
     const store = useStore();
     const dropArea = ref(null);
+    const fileInput = ref(null);
     const isDragOver = ref(false);
     const dropText = computed(() =>
-      isDragOver.value ? "Drop it!" : "Drag and drop .arb files here"
+      isDragOver.value
+        ? "Drop it!"
+        : "Click here or drag and drop .arb files here"
     );
 
     onMounted(() => {
@@ -67,6 +72,21 @@ export default {
       store.dispatch("loadFiles", files);
     };
 
+    const openFileInput = () => {
+      console.log("open");
+      fileInput.value.click();
+    };
+
+    const updateFile = (e) => {
+      console.log(e);
+      const files = e.target.files;
+      console.log(files);
+      if (files.length === 0) {
+        return;
+      }
+      store.dispatch("loadFiles", files);
+    };
+
     onMounted(() => {
       dropArea.value.addEventListener("drop", dropHandler);
       dropArea.value.addEventListener("dragenter", dragEnterHandler);
@@ -77,6 +97,9 @@ export default {
     return {
       dropArea,
       dropText,
+      fileInput,
+      openFileInput,
+      updateFile,
     };
   },
 };
