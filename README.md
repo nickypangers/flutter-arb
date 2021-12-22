@@ -10,12 +10,12 @@ This editor is open-sourced and free-to-use. Feel free to contribute to the proj
 
 ## Progress
 
-[x] Editable translation keys
+- [x] Editable translation keys
 
-[ ] User guide - ( in progress )
+- [ ] User guide - ( in progress )
 
-[ ] Mobile support - ( in progress )
+- [ ] Mobile support - ( in progress )
 
-[ ] Custom file name export
+- [ ] Custom file name export
 
-[ ] Click to upload files
+- [ ] Click to upload files
