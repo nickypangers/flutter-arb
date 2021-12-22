@@ -3,7 +3,8 @@
     ref="dropArea"
     class="
       h-96
-      w-96
+      w-full
+      md:w-96
       border-2 border-dashed border-secondary
       flex
       items-center

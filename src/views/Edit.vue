@@ -30,8 +30,8 @@
           >
         </button>
       </div>
-      <div class="flex justify-between items-start my-5">
-        <div class="flex items-center">
+      <div class="flex flex-col md:flex-row justify-between items-start my-5">
+        <div class="mt-3 flex items-center">
           <add-input-form-row
             v-model="newTranslationKey"
             placeholder="New Translation"
@@ -46,7 +46,7 @@
             />
           </button> -->
         </div>
-        <div class="flex items-center">
+        <div class="mt-3 flex items-center">
           <add-input-form-row
             v-model="newLang"
             placeholder="New Language"
@@ -145,6 +145,21 @@ export default {
         toast.warning("Please enter a translation key");
         return;
       }
+
+      let isTranslationKeyExists = false;
+
+      editableContent.value.forEach((translation) => {
+        if (translation[0] === newTranslationKey.value) {
+          isTranslationKeyExists = true;
+          return;
+        }
+      });
+
+      if (isTranslationKeyExists) {
+        toast.warning("Translation key already exists");
+        return;
+      }
+
       let content = {};
       languages.value.forEach((lang) => {
         content[lang] = "";
