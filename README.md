@@ -1,7 +1,21 @@
-# Vue 3 + Vite
+# Flutter ARB Editor
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Description
 
-## Recommended IDE Setup
+This is a web editor for .arb files, which are required for internationalizing flutter applications using the [official method](https://docs.flutter.dev/development/accessibility-and-localization/internationalization). There are other options for improving the editing experience, such as VSCode plugins.
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+This editor is open-sourced and free-to-use. Feel free to contribute to the project (adding features, fixing bugs).
+
+[Flutter ARB Editor Link](https://flutterarb.com)
+
+## Progress
+
+[x] Editable translation keys
+
+[ ] User guide - ( in progress )
+
+[ ] Mobile support - ( in progress )
+
+[ ] Custom file name export
+
+[ ] Click to upload files
