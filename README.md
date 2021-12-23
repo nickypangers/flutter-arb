@@ -10,12 +10,8 @@ This editor is open-sourced and free-to-use. Feel free to contribute to the proj
 
 ## Progress
 
-- [x] Editable translation keys
+For progress, please check [trello board](https://trello.com/b/vlGSzu4n/flutter-arb-progress). I will constantly add features as well as update the progress there.
 
-- [ ] User guide - ( in progress )
+## Contribute
 
-- [ ] Mobile support - ( in progress )
-
-- [ ] Custom file name export
-
-- [x] Click to upload files
+Feel free to suggest features or report bugs by creating a new issue here. I also welcome pull requests.
