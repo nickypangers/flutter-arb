@@ -16,7 +16,7 @@
     <input
       type="submit"
       :value="buttonText"
-      class="bg-secondary p-3 rounded-tr-lg rounded-br-lg text-white"
+      class="bg-primary p-3 rounded-tr-lg rounded-br-lg text-white"
     />
   </form>
 </template>
