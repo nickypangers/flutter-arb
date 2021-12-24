@@ -4,7 +4,7 @@
       class="flex flex-col md:flex-row md:justify-between md:items-center mb-4"
     >
       <button
-        class="text-white p-2 border border-white rounded-lg"
+        class="text-white p-2 bg-primary rounded-lg"
         @click="editAnotherProject"
       >
         Edit Another Project
@@ -38,13 +38,6 @@
             button-text="Add Translation"
             @submit="addTranslation"
           />
-          <!-- <button>
-            <font-awesome-icon
-              icon="info-circle"
-              size="lg"
-              class="ml-2 text-white"
-            />
-          </button> -->
         </div>
         <div class="mt-3 flex items-center">
           <add-input-form-row

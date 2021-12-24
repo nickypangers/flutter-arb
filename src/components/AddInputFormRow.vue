@@ -4,12 +4,19 @@
       type="text"
       v-model="value"
       :placeholder="placeholder"
-      class="h-full rounded-tl-lg rounded-bl-lg p-2 text-black outline-none"
+      class="
+        h-full
+        rounded-tl-lg rounded-bl-lg
+        p-2
+        text-black
+        outline-none
+        border
+      "
     />
     <input
       type="submit"
       :value="buttonText"
-      class="bg-secondary p-3 rounded-tr-lg rounded-br-lg text-primary"
+      class="bg-secondary p-3 rounded-tr-lg rounded-br-lg text-white"
     />
   </form>
 </template>

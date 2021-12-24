@@ -1,9 +1,9 @@
 <template>
   <div class="border p-4 rounded-xl">
-    <div class="w-full flex items-center pb-2">
+    <div class="w-full flex justify-between items-center pb-2">
       <input
         type="text"
-        class="text-3xl font-bold flex-grow"
+        class="text-3xl font-bold flex-grow text-primary"
         v-model="translationTitle"
       />
       <button class="p-1" @click="deleteTranslation">
@@ -18,7 +18,7 @@
         <p class="mr-3">{{ lang }}</p>
         <input
           type="textarea"
-          class="flex-grow border rounded-lg p-2 mr-3 text-white"
+          class="flex-grow border rounded-lg p-2 mr-3 text-black"
           v-model="contents[lang]"
         />
         <button class="p-1" @click="deleteLanguage(lang)">

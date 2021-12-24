@@ -10,13 +10,13 @@
     </div>
     <div class="mt-12">
       <button
-        class="p-3 bg-secondary text-white text-lg rounded-lg"
+        class="p-3 bg-primary text-white text-lg rounded-lg"
         @click="router.push('/edit')"
       >
         Start New Project
       </button>
       <button
-        class="ml-3 p-3 bg-secondary text-white text-lg rounded-lg"
+        class="ml-3 p-3 bg-primary text-white text-lg rounded-lg"
         @click="router.push('/guide')"
       >
         Guide

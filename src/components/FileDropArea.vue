@@ -5,7 +5,7 @@
       h-96
       w-full
       md:w-96
-      border-2 border-dashed border-secondary
+      border-2 border-dashed border-primary
       flex
       items-center
       justify-center

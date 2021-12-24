@@ -1,8 +1,8 @@
 <template>
-  <div class="text-white text-left">
+  <div class="text-black text-left">
     <div class="mb-4">
       <button
-        class="text-white p-2 border border-white rounded-lg"
+        class="text-primary p-2 border border-primary rounded-lg"
         @click="router.go(-1)"
       >
         Back

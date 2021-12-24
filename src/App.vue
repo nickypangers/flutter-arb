@@ -1,8 +1,13 @@
 <template>
   <div class="container py-8">
-    <div class="flex justify-end items-center mb-6">
+    <div class="flex justify-between items-center mb-6">
+      <img src="images/logo.webp" alt="Logo" class="w-16" />
       <a href="https://github.com/nickypangers/arb-editor">
-        <font-awesome-icon :icon="['fab', 'github']" size="2x" />
+        <font-awesome-icon
+          :icon="['fab', 'github']"
+          size="2x"
+          class="text-black"
+        />
       </a>
     </div>
     <router-view />
