@@ -1,12 +1,13 @@
 <template>
-  <form @submit.prevent="submit" class="h-12">
+  <form @submit.prevent="submit" class="md:h-12 flex flex-col md:flex-row">
     <input
       type="text"
       v-model="value"
       :placeholder="placeholder"
       class="
         h-full
-        rounded-tl-lg rounded-bl-lg
+        rounded-lg
+        md:rounded-tl-lg md:rounded-bl-lg
         p-2
         text-black
         outline-none
@@ -16,7 +17,15 @@
     <input
       type="submit"
       :value="buttonText"
-      class="bg-primary p-3 rounded-tr-lg rounded-br-lg text-white"
+      class="
+        mt-3
+        md:mt-0
+        bg-primary
+        p-3
+        rounded-lg
+        md:rounded-tr-lg md:rounded-br-lg
+        text-white
+      "
     />
   </form>
 </template>

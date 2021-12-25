@@ -1,9 +1,9 @@
 <template>
   <div class="border p-4 rounded-xl">
-    <div class="w-full flex justify-between items-center pb-2">
+    <div class="w-full md:flex justify-between items-center pb-2">
       <input
         type="text"
-        class="text-3xl font-bold flex-grow text-primary"
+        class="text-3xl w-full font-bold md:flex-grow text-primary"
         v-model="translationTitle"
       />
       <button class="p-1" @click="deleteTranslation">

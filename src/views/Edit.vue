@@ -10,7 +10,7 @@
         Edit Another Project
       </button>
       <button
-        class="mt-4 md:mt-0 text-white p-2 border border-white rounded-lg"
+        class="mt-4 md:mt-0 text-white p-2 bg-primary rounded-lg"
         @click="router.push('/guide')"
       >
         Guide
@@ -30,8 +30,10 @@
           >
         </button>
       </div>
-      <div class="flex flex-col md:flex-row justify-between items-start my-5">
-        <div class="mt-3 flex items-center">
+      <div
+        class="flex flex-col md:flex-row md:justify-between md:items-start my-5"
+      >
+        <div class="mt-3 flex flex-col md:flex-row items-center">
           <add-input-form-row
             v-model="newTranslationKey"
             placeholder="New Translation"
@@ -39,7 +41,7 @@
             @submit="addTranslation"
           />
         </div>
-        <div class="mt-3 flex items-center">
+        <div class="mt-3 flex flex-col md:flex-row items-center">
           <add-input-form-row
             v-model="newLang"
             placeholder="New Language"
@@ -55,8 +57,6 @@
           </button>
         </div>
       </div>
-      <!-- <p>{{ editableContent }}</p> -->
-
       <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
         <translation-box
           v-for="(translation, index) in editableContent"
